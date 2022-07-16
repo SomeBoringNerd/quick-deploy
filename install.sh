@@ -22,8 +22,6 @@ cp .zshrc ~/
 # change hostname if not already set
 hostnamectl set-hostname $CHOOSEN_HOSTNAME
 
-# install node
-
 # install node, npm and stuff
 wget https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
 
@@ -33,10 +31,10 @@ sudo tar -xJvf node-v16.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
 echo export PATH=/usr/local/lib/nodejs/node-v16.16.0-linux-x64:$PATH > ~/.profile
 
 # install specific packages for server or personal computer
-if [ "$deploy_type" == "1"] ; then
+if [ "$deploy_type" == "1" ] ; then
     # polychromatic for my mouse
-    add-apt-repository ppa:polychromatic/stable
-    add-apt-repository ppa:openrazer/stable
+    add-apt-repository ppa:polychromatic/stable -y
+    add-apt-repository ppa:openrazer/stable -y
 
     apt update 
     sudo apt install polychromatic openrazer-meta
@@ -44,14 +42,14 @@ if [ "$deploy_type" == "1"] ; then
     #amd driver
     wget https://repo.radeon.com/amdgpu-install/22.20/ubuntu/focal/amdgpu-install_22.20.50200-1_all.deb
 
-    dpkg -i amdgpu-install_22.20.50200-1_all.deb
+    dpkg -i amdgpu-install_22.20.50200-1_all.deb -y
 
     amdgpu-install -y --vulkan=amdvlk,pro --accept-eula
 
 
-elif ["$deploy_type" == "2"] ; then
+elif [ "$deploy_type" == "2" ] ; then
     # nginx
-    apt install nginx 
+    apt install nginx -y
 
     # allow some ports
     ufw allow 25565     # minecraft
@@ -63,3 +61,4 @@ else
     echo "please use a valid option"
     exit
 fi
+
