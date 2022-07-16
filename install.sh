@@ -16,9 +16,6 @@ apt install zsh neofetch htop build-essential curl file git git-core curl fonts-
 # install oh-my-zsh automatically
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# move my zsh config to home folder
-cp .zshrc ~/
-
 # change hostname if not already set
 hostnamectl set-hostname $CHOOSEN_HOSTNAME
 
@@ -62,3 +59,6 @@ else
     exit
 fi
 
+# move my zsh config to home folder
+rm ~.zshrc
+cp .zshrc ~/.zshrc
