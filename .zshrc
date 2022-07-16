@@ -6,6 +6,9 @@ export PATH=$PATH:$HOME/.dotnet
 export DOTNET_ROOT=$HOME/.dotnet
 export ZSH="$HOME/.oh-my-zsh"
 
+# Nodejs
+export PATH=/usr/local/lib/nodejs/node-v16.16.0-linux-x64/bin:$PATH
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

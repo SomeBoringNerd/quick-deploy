@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt update -y && sudo apt dist-upgrade -y
+#sudo apt update -y && sudo apt dist-upgrade -y
 clear
 #change this to your host-name of choosing
 CHOOSEN_HOSTNAME="SomeBoringCorp"
@@ -13,9 +13,6 @@ read deploy_type
 # install apt packages
 apt install zsh neofetch htop build-essential curl file git git-core curl fonts-powerline -y
 
-# install oh-my-zsh automatically
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # change hostname if not already set
 hostnamectl set-hostname $CHOOSEN_HOSTNAME
 
@@ -24,8 +21,6 @@ wget https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
 
 sudo mkdir -p /usr/local/lib/nodejs
 sudo tar -xJvf node-v16.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
-
-echo export PATH=/usr/local/lib/nodejs/node-v16.16.0-linux-x64:$PATH > ~/.profile
 
 # install specific packages for server or personal computer
 if [ "$deploy_type" = "1" ] ; then
@@ -58,7 +53,4 @@ else
     echo "please use a valid option"
     exit
 fi
-
-# move my zsh config to home folder
-rm ~.zshrc
-cp .zshrc ~/.zshrc
+echo "installation finished ! install oh-my-zsh by running ./ohmyz.sh as the user (not sudo)"
