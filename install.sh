@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#sudo apt update -y && sudo apt dist-upgrade -y
+sudo apt update -y #&& sudo apt dist-upgrade -y
 clear
 #change this to your host-name of choosing
 CHOOSEN_HOSTNAME="SomeBoringCorp"
