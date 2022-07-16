@@ -31,7 +31,7 @@ sudo tar -xJvf node-v16.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
 echo export PATH=/usr/local/lib/nodejs/node-v16.16.0-linux-x64:$PATH > ~/.profile
 
 # install specific packages for server or personal computer
-if [ "$deploy_type" == "1" ] ; then
+if [ "$deploy_type" = "1" ] ; then
     # polychromatic for my mouse
     add-apt-repository ppa:polychromatic/stable -y
     add-apt-repository ppa:openrazer/stable -y
@@ -47,7 +47,7 @@ if [ "$deploy_type" == "1" ] ; then
     amdgpu-install -y --vulkan=amdvlk,pro --accept-eula
 
 
-elif [ "$deploy_type" == "2" ] ; then
+elif [ "$deploy_type" = "2" ] ; then
     # nginx
     apt install nginx -y
 
