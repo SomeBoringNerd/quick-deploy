@@ -14,7 +14,7 @@ read deploy_type
 apt install zsh neofetch htop build-essential curl file git git-core curl fonts-powerline -y
 
 # install oh-my-zsh automatically
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # move my zsh config to home folder
 cp .zshrc ~/
