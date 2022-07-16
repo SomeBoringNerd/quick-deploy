@@ -1,20 +1,39 @@
 #!/bin/sh
 
-sudo apt update && sudo apt dist-upgrade
-
+sudo apt update -y && sudo apt dist-upgrade -y
+clear
 #change this to your host-name of choosing
 CHOOSEN_HOSTNAME="SomeBoringCorp"
 
-echo -n "Deploy on : "
-echo -n "personal computer : 1"
-echo -n "server : 2"
+echo -n "Deploy on : \n"
+echo -n "personal computer : 1\n"
+echo -n "server : 2\n"
 read deploy_type
 
 # install apt packages
 apt install zsh neofetch htop build-essential curl file git git-core curl fonts-powerline -y
 
+# install oh-my-zsh automatically
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# move my zsh config to home folder
+cp .zshrc ~/
+
+# change hostname if not already set
+hostnamectl set-hostname $CHOOSEN_HOSTNAME
+
+# install node
+
+# install node, npm and stuff
+wget https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
+
+sudo mkdir -p /usr/local/lib/nodejs
+sudo tar -xJvf node-v16.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
+
+echo export PATH=/usr/local/lib/nodejs/node-v16.16.0-linux-x64:$PATH > ~/.profile
+
 # install specific packages for server or personal computer
-if["$deploy_type" == "1"]; then
+if [ "$deploy_type" == "1"] ; then
     # polychromatic for my mouse
     add-apt-repository ppa:polychromatic/stable
     add-apt-repository ppa:openrazer/stable
@@ -30,17 +49,9 @@ if["$deploy_type" == "1"]; then
     amdgpu-install -y --vulkan=amdvlk,pro --accept-eula
 
 
-elif["$deploy_type" == "2"]; then
+elif ["$deploy_type" == "2"] ; then
     # nginx
     apt install nginx 
-
-    # install node, npm and stuff
-    wget https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
-
-    sudo mkdir -p /usr/local/lib/nodejs
-    sudo tar -xJvf node-v16.16.0-linux-x64.tar.xz -C /usr/local/lib/nodejs 
-
-    echo export PATH=/usr/local/lib/nodejs/node-v16.16.0-linux-x64:$PATH > ~/.profile
 
     # allow some ports
     ufw allow 25565     # minecraft
@@ -52,13 +63,3 @@ else
     echo "please use a valid option"
     exit
 fi
-
-# install oh-my-zsh automatically
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-# move my zsh config to home folder
-cp .zshrc ~/
-
-# change hostname if not already set
-hostnamectl set-hostname $CHOOSEN_HOSTNAME
-
