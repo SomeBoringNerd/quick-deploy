@@ -10,7 +10,7 @@ clone the repo
 
 run the installator
 
-`cd quick-deploy && sudo ./install && ./ohmyzsh && ./apply-zsh-config.sh`
+`cd quick-deploy && sudo ./install && ./ohmyz.sh && ./apply-zsh-config.sh`
 
 reboot and profit.
 
