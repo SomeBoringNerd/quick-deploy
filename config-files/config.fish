@@ -1,9 +1,7 @@
-set -ga fish_user_paths /home/someboringnerd/.nimble/bin
 set -U fish_greeting
-echo 
-pfetch
+echo \"\" && pridefetch -l bisexual
 
-alias clear="clear && pfetch"
+alias clear="clear && echo \"\" && pridefetch -l bisexual"
 
 function encode -d "Encode a video file for Davinci Resolve"
 

@@ -22,7 +22,7 @@ hostnamectl set-hostname $CHOOSEN_HOSTNAME
 if [ "$deploy_type" = "1" ] ; then
 	pacman -Syu --noconfirm
 	
-	pacman -S neofetch fish git firefox xfce4-terminal steam filezilla nvidia nvidia-utils opencl-nvidia neovim noto-fonts-cjk --noconfirm
+	pacman -S neofetch fish git firefox xfce4-terminal steam filezilla nvidia nvidia-utils opencl-nvidia neovim noto-fonts-cjk obs-studio --noconfirm
 
 	git clone https://aur.archlinux.org/yay.git
 
@@ -30,7 +30,7 @@ if [ "$deploy_type" = "1" ] ; then
 
 	makepkg -siC --noconfirm
 
-	yay -S davinci-resolve onlyoffice-bin unityhub rider ffmpeg-git qbittorrent-git 7-zip-full pfetch --noconfirm
+	yay -S onlyoffice-bin unityhub rider ffmpeg-git qbittorrent-git 7-zip-full pridefetch aseprite --noconfirm
 
 elif [ "$deploy_type" = "2" ] ; then
     # nginx
@@ -53,6 +53,11 @@ else
     echo "please use a valid option"
     exit
 fi
+
+# set fish as default shell
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+
+chsh -s /usr/local/bin/fish
 
 # move config files
 
